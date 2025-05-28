@@ -1,0 +1,124 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Cute Pet Care</title>
+    <style>
+        body {
+            font-family: 'Comic Sans MS', cursive, sans-serif;
+            background-color: #FFFAF0;
+            text-align: center;
+            color: #555;
+        }
+        h1 {
+            color: #FF69B4;
+        }
+        #container {
+            background-color: #FFF0F5;
+            border-radius: 15px;
+            padding: 20px;
+            width: 50%;
+            margin: auto;
+            box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.1);
+        }
+        #dog-img {DOG..png
+            width: 180px;
+            height: auto;
+            border-radius: 10px;
+            border: 4px solid #FFC0CB;
+            padding: 5px;
+            background-color: #FFE4E1;
+        }
+        #status {
+            font-size: 20px;
+            margin-top: 10px;
+            color: #FF1493;
+        }
+        .bar-container {
+            width: 80%;
+            background-color: #FFE4E1;
+            border-radius: 10px;
+            margin: auto;
+            margin-top: 10px;
+            height: 20px;
+            position: relative;
+        }
+        .bar {
+            height: 100%;
+            width: 100%;
+            border-radius: 10px;
+            transition: 0.3s;
+        }
+        #feed-bar { background-color: #FFB6C1; }
+        #play-bar { background-color: #FFD700; }
+        #rest-bar { background-color: #87CEFA; }
+        button {
+            background-color: #FFB6C1;
+            border: none;
+            padding: 12px;
+            font-size: 16px;
+            border-radius: 10px;
+            cursor: pointer;
+            color: white;
+            transition: 0.3s;
+        }
+        button:hover {
+            background-color: #FF69B4;
+        }
+    </style>
+</head>
+<body>
+    <h1>🐶 Take Care of Your Cute Pet Dog 🐶</h1>
+    <div id="container">
+        <img id="dog-img" src="https://via.placeholder.com/180?text=Cute+Dog" alt="Cute Pet Dog">
+        <p id="status">Your dog is happy! 🐾</p>
+        
+        <div class="bar-container"><div id="feed-bar" class="bar"></div></div>
+        <div class="bar-container"><div id="play-bar" class="bar"></div></div>
+        <div class="bar-container"><div id="rest-bar" class="bar"></div></div>
+
+        <button onclick="feedDog()">🍖 Feed</button>
+        <button onclick="playWithDog()">🎾 Play</button>
+        <button onclick="letDogRest()">💤 Rest</button>
+    </div>
+
+    <script>
+        let feedLevel = 100, playLevel = 100, restLevel = 100;
+
+        function updateBars() {
+            document.getElementById('feed-bar').style.width = feedLevel + "%";
+            document.getElementById('play-bar').style.width = playLevel + "%";
+            document.getElementById('rest-bar').style.width = restLevel + "%";
+        }
+
+        function feedDog() {
+            feedLevel = Math.min(feedLevel + 20, 100);
+            document.getElementById('status').textContent = "Your dog is full and happy! 🥰";
+            updateBars();
+        }
+        
+        function playWithDog() {
+            playLevel = Math.min(playLevel + 20, 100);
+            document.getElementById('status').textContent = "Your dog is excited and having fun! 🎉";
+            updateBars();
+        }
+        
+        function letDogRest() {
+            restLevel = Math.min(restLevel + 20, 100);
+            document.getElementById('status').textContent = "Your dog is resting peacefully! 😴";
+            updateBars();
+        }
+
+        function decreaseStats() {
+            feedLevel = Math.max(feedLevel - 5, 0);
+            playLevel = Math.max(playLevel - 5, 0);
+            restLevel = Math.max(restLevel - 5, 0);
+            updateBars();
+        }
+
+        setInterval(decreaseStats, 5000);
+        updateBars();
+    </script>
+</body>
+</html>
